@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">GDSC UB Workshop Android 1</string>
+    <string name="app_name">Gardening</string>
+    <string name="example_plant_name">Lidah Buaya</string>
+    <string name="example_plant_latin_name">Aloe Vera</string>
+    <string name="example_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et ante nec risus lacinia sagittis. Duis volutpat nunc non posuere iaculis. Phasellus mauris felis, fringilla id pharetra in, imperdiet eget nisi</string>
+    <string name="example_watering">2 – 3 minggu sekali</string>
+    <string name="example_temperature">20 – 23 C</string>
+    <string name="example_place">Outdoor / Indoor</string>
 </resources>
