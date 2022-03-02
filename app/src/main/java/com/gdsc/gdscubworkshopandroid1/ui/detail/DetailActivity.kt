@@ -58,7 +58,7 @@ class DetailActivity : AppCompatActivity(), ResponseCallback {
     }
 
     override fun onSuccess(prediction: PredictionResponse) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onFailed(message: String) {

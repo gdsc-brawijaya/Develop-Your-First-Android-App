@@ -15,7 +15,6 @@ class MainViewModel: ViewModel() {
     private var api: ApiService = RetrofitService.build()
 
     fun getAllPlants(callback: ResponseCallback) {
-        val list = ArrayList<Plant>()
         callback.onLoading()
         api.getAllPlants().enqueue(object : Callback<PlantResponse> {
             override fun onResponse(call: Call<PlantResponse>, response: Response<PlantResponse>) {

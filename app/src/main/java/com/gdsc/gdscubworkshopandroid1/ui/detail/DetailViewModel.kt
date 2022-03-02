@@ -1,10 +1,8 @@
 package com.gdsc.gdscubworkshopandroid1.ui.detail
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.gdsc.gdscubworkshopandroid1.data.remote.ApiService
 import com.gdsc.gdscubworkshopandroid1.data.remote.RetrofitService
-import com.gdsc.gdscubworkshopandroid1.model.Plant
 import com.gdsc.gdscubworkshopandroid1.model.PlantResponse
 import com.gdsc.gdscubworkshopandroid1.util.ResponseCallback
 import retrofit2.Call
