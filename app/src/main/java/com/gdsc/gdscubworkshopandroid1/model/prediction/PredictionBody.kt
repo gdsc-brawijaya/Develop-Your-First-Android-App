@@ -2,7 +2,7 @@ package com.gdsc.gdscubworkshopandroid1.model.prediction
 
 import com.squareup.moshi.Json
 
-data class PredictionPost(
+data class PredictionBody(
     @field:Json(name = "sepal_length")
     val sepalLength: Double,
 
