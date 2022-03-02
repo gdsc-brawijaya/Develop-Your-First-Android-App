@@ -1,11 +1,13 @@
-package com.gdsc.gdscubworkshopandroid1
+package com.gdsc.gdscubworkshopandroid1.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.gdsc.gdscubworkshopandroid1.ui.detail.DetailActivity
 import com.gdsc.gdscubworkshopandroid1.databinding.ItemListBinding
+import com.gdsc.gdscubworkshopandroid1.model.Plant
 
 class PlantAdapter: RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
 

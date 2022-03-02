@@ -1,9 +1,10 @@
-package com.gdsc.gdscubworkshopandroid1
+package com.gdsc.gdscubworkshopandroid1.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.gdsc.gdscubworkshopandroid1.databinding.ActivityDetailBinding
+import com.gdsc.gdscubworkshopandroid1.util.Dummy
 
 class DetailActivity : AppCompatActivity() {
 

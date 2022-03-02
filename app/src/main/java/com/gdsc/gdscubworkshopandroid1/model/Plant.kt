@@ -1,4 +1,4 @@
-package com.gdsc.gdscubworkshopandroid1
+package com.gdsc.gdscubworkshopandroid1.model
 
 data class Plant(
     val id: Int = 0,

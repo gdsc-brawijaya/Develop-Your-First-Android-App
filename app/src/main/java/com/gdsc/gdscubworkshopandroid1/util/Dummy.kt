@@ -1,4 +1,6 @@
-package com.gdsc.gdscubworkshopandroid1
+package com.gdsc.gdscubworkshopandroid1.util
+
+import com.gdsc.gdscubworkshopandroid1.model.Plant
 
 object Dummy {
     fun getAllPlants(): List<Plant> = arrayListOf<Plant>(
