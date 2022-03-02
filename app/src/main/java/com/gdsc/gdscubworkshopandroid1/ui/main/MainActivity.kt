@@ -5,25 +5,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gdsc.gdscubworkshopandroid1.ui.prediction.PredictionActivity
 import com.gdsc.gdscubworkshopandroid1.R
 import com.gdsc.gdscubworkshopandroid1.adapter.PlantAdapter
 import com.gdsc.gdscubworkshopandroid1.databinding.ActivityMainBinding
-import com.gdsc.gdscubworkshopandroid1.util.Dummy
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var plantAdapter: PlantAdapter
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         plantAdapter = PlantAdapter()
-        plantAdapter.setAllData(Dummy.getAllPlants())
+        plantAdapter.setAllData(viewModel.getAllPlants())
 
         binding.rvPlant.apply {
             adapter = plantAdapter
