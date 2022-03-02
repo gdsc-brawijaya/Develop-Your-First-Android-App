@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gdsc.gdscubworkshopandroid1.ui.prediction.PredictionActivity
 import com.gdsc.gdscubworkshopandroid1.R
 import com.gdsc.gdscubworkshopandroid1.adapter.PlantAdapter
 import com.gdsc.gdscubworkshopandroid1.databinding.ActivityMainBinding
+import com.gdsc.gdscubworkshopandroid1.model.Plant
+import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionResponse
+import com.gdsc.gdscubworkshopandroid1.util.ResponseCallback
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ResponseCallback {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var plantAdapter: PlantAdapter
@@ -26,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         plantAdapter = PlantAdapter()
-        plantAdapter.setAllData(viewModel.getAllPlants())
+        viewModel.getAllPlants(this)
 
         binding.rvPlant.apply {
             adapter = plantAdapter
@@ -48,5 +53,27 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    override fun onLoading() {
+        binding.pbMain.visibility = View.VISIBLE
+    }
+
+    override fun onSuccess(plant: Plant?) {
+
+    }
+
+    override fun onSuccess(list: List<Plant>) {
+        binding.pbMain.visibility = View.INVISIBLE
+        plantAdapter.setAllData(list)
+    }
+
+    override fun onSuccess(prediction: PredictionResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailed(message: String) {
+        binding.pbMain.visibility = View.INVISIBLE
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

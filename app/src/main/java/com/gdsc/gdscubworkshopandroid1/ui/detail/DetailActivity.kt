@@ -2,11 +2,17 @@ package com.gdsc.gdscubworkshopandroid1.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.gdsc.gdscubworkshopandroid1.databinding.ActivityDetailBinding
+import com.gdsc.gdscubworkshopandroid1.model.Plant
+import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionResponse
+import com.gdsc.gdscubworkshopandroid1.util.ResponseCallback
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), ResponseCallback {
 
     companion object {
         const val EXTRA_ID = "ID"
@@ -23,18 +29,40 @@ class DetailActivity : AppCompatActivity() {
        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 
         val id = intent.getIntExtra(EXTRA_ID, 0)
-        val selectedPlant = viewModel.getPlantDetail(id)
+        viewModel.getPlantDetail(id, this)
 
+    }
+
+    override fun onLoading() {
+        binding.pbDetail.visibility = View.VISIBLE
+    }
+
+    override fun onSuccess(plant: Plant?) {
+        binding.pbDetail.visibility = View.INVISIBLE
+        Log.d("Plant Detail", plant.toString())
         binding.apply {
             Glide.with(this@DetailActivity)
-                .load(selectedPlant?.image)
+                .load(plant?.image)
                 .into(ivPlant)
-            tvPlantName.text = selectedPlant?.name
-            tvPlantLatinName.text = selectedPlant?.latinName
-            tvDescription.text = selectedPlant?.description
-            tvPlace.text = selectedPlant?.location
-            tvWatering.text = selectedPlant?.watering
-            tvTemperature.text = selectedPlant?.temperature
+            tvPlantName.text = plant?.name
+            tvPlantLatinName.text = plant?.latinName
+            tvDescription.text = plant?.description
+            tvPlace.text = plant?.location
+            tvWatering.text = plant?.watering
+            tvTemperature.text = plant?.temperature
         }
+    }
+
+    override fun onSuccess(list: List<Plant>) {
+
+    }
+
+    override fun onSuccess(prediction: PredictionResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailed(message: String) {
+        binding.pbDetail.visibility = View.VISIBLE
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
