@@ -1,4 +1,4 @@
-package com.gdsc.gdscubworkshopandroid1.ui
+package com.gdsc.gdscubworkshopandroid1.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
