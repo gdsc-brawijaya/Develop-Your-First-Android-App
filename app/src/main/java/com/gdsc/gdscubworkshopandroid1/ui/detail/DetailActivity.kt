@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.gdsc.gdscubworkshopandroid1.databinding.ActivityDetailBinding
 import com.gdsc.gdscubworkshopandroid1.model.Plant
 import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionResponse
+import com.gdsc.gdscubworkshopandroid1.util.Resource
 import com.gdsc.gdscubworkshopandroid1.util.ResponseCallback
 
 class DetailActivity : AppCompatActivity(), ResponseCallback {
@@ -29,7 +30,13 @@ class DetailActivity : AppCompatActivity(), ResponseCallback {
        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 
         val id = intent.getIntExtra(EXTRA_ID, 0)
-        viewModel.getPlantDetail(id, this)
+        viewModel.getPlantDetail(id).observe(this) {
+            when (it) {
+                is Resource.Loading -> onLoading()
+                is Resource.Success -> onSuccess(it.data)
+                is Resource.Error -> onFailed(it.message!!)
+            }
+        }
 
     }
 

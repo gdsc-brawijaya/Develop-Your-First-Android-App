@@ -15,6 +15,7 @@ import com.gdsc.gdscubworkshopandroid1.adapter.PlantAdapter
 import com.gdsc.gdscubworkshopandroid1.databinding.ActivityMainBinding
 import com.gdsc.gdscubworkshopandroid1.model.Plant
 import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionResponse
+import com.gdsc.gdscubworkshopandroid1.util.Resource
 import com.gdsc.gdscubworkshopandroid1.util.ResponseCallback
 
 class MainActivity : AppCompatActivity(), ResponseCallback {
@@ -31,7 +32,13 @@ class MainActivity : AppCompatActivity(), ResponseCallback {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         plantAdapter = PlantAdapter()
-        viewModel.getAllPlants(this)
+        viewModel.getAllPlants().observe(this) {
+            when(it) {
+                is Resource.Loading -> onLoading()
+                is Resource.Success -> it.data?.let { it1 -> onSuccess(it1) }
+                is Resource.Error -> it.message?.let { it1 -> onFailed(it1) }
+            }
+        }
 
         binding.rvPlant.apply {
             adapter = plantAdapter

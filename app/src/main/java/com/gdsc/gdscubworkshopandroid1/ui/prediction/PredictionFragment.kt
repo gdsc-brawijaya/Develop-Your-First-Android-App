@@ -11,6 +11,7 @@ import com.gdsc.gdscubworkshopandroid1.databinding.FragmentPredictionBinding
 import com.gdsc.gdscubworkshopandroid1.model.Plant
 import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionBody
 import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionResponse
+import com.gdsc.gdscubworkshopandroid1.util.Resource
 import com.gdsc.gdscubworkshopandroid1.util.ResponseCallback
 
 class PredictionFragment : Fragment(), ResponseCallback {
@@ -44,7 +45,13 @@ class PredictionFragment : Fragment(), ResponseCallback {
                     sepalLength, sepalWidth, petalLength, petalWidth
                 )
 
-                viewModel.getPrediction(body, this@PredictionFragment)
+                viewModel.getPrediction(body).observe(viewLifecycleOwner) {
+                    when(it) {
+                        is Resource.Loading -> onLoading()
+                        is Resource.Success -> it.data?.let { it1 -> onSuccess(it1) }
+                        is Resource.Error -> it.message?.let { it1 -> onFailed(it1) }
+                    }
+                }
             }
         }
     }
