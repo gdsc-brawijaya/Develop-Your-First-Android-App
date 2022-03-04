@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.gdsc.gdsctoast.GDSCToast
+import com.gdsc.gdsctoast.util.ToastType
 import com.gdsc.gdscubworkshopandroid1.databinding.FragmentPredictionBinding
 import com.gdsc.gdscubworkshopandroid1.model.Plant
 import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionBody
@@ -84,6 +86,11 @@ class PredictionFragment : Fragment(), ResponseCallback {
     }
 
     override fun onFailed(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        GDSCToast.showAnyToast(requireContext()) {
+            it.apply {
+                text = message
+                toastType = ToastType.ERROR
+            }
+        }
     }
 }

@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.gdsc.gdsctoast.GDSCToast
+import com.gdsc.gdsctoast.util.ToastType
 import com.gdsc.gdscubworkshopandroid1.ui.prediction.PredictionActivity
 import com.gdsc.gdscubworkshopandroid1.R
 import com.gdsc.gdscubworkshopandroid1.adapter.PlantAdapter
@@ -81,6 +83,11 @@ class MainActivity : AppCompatActivity(), ResponseCallback {
 
     override fun onFailed(message: String) {
         binding.pbMain.visibility = View.INVISIBLE
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        GDSCToast.showAnyToast(this) {
+            it.apply {
+                text = message
+                toastType = ToastType.ERROR
+            }
+        }
     }
 }

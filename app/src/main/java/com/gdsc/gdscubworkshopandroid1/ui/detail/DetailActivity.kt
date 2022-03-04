@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.gdsc.gdsctoast.GDSCToast
+import com.gdsc.gdsctoast.util.ToastType
 import com.gdsc.gdscubworkshopandroid1.databinding.ActivityDetailBinding
 import com.gdsc.gdscubworkshopandroid1.model.Plant
 import com.gdsc.gdscubworkshopandroid1.model.prediction.PredictionResponse
@@ -70,6 +72,11 @@ class DetailActivity : AppCompatActivity(), ResponseCallback {
 
     override fun onFailed(message: String) {
         binding.pbDetail.visibility = View.VISIBLE
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        GDSCToast.showAnyToast(this) {
+            it.apply {
+                text = message
+                toastType = ToastType.ERROR
+            }
+        }
     }
 }
