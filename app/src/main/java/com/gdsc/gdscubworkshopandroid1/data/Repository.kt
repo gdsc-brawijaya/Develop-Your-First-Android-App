@@ -42,5 +42,5 @@ class Repository {
         } catch (e: Exception) {
             emit(Resource.Error("Something went wrong: $e"))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 }
