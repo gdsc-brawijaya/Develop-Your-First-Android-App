@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <ImageView
+        android:id="@+id/iv_plant"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@drawable/ic_plant"/>
+
+    <TextView
+        android:id="@+id/tv_plant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/iv_plant"
+        app:layout_constraintStart_toStartOf="@id/iv_plant"
+        app:layout_constraintTop_toBottomOf="@+id/iv_plant"
+        tools:text="@string/example_plant_name"/>
+
+    <TextView
+        android:id="@+id/tv_plant_latin_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintEnd_toEndOf="@id/tv_plant_name"
+        app:layout_constraintStart_toStartOf="@id/tv_plant_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_plant_name"
+        tools:text="@string/example_plant_latin_name"/>
+    
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="18dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_plant_latin_name"
+        tools:text="@string/example_description"/>
+
+    <TextView
+        android:id="@+id/tv_watering"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@id/tv_description"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        tools:text="@string/example_watering"
+        app:drawableTopCompat="@drawable/ic_water" />
+
+    <TextView
+        android:id="@+id/tv_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_description"
+        app:layout_constraintTop_toTopOf="@id/tv_watering"
+        app:drawableTopCompat="@drawable/ic_garden"
+        tools:text="@string/example_place"/>
+
+    <TextView
+        android:id="@+id/tv_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/tv_watering"
+        app:layout_constraintTop_toTopOf="@id/tv_watering"
+        app:layout_constraintEnd_toStartOf="@id/tv_place"
+        tools:text="@string/example_temperature"
+        app:drawableTopCompat="@drawable/ic_temperature" />
+</androidx.constraintlayout.widget.ConstraintLayout>
