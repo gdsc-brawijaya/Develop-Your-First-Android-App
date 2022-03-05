@@ -1,6 +1,7 @@
 package com.gdsc.gdscubworkshopandroid1.ui.detail
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gdsc.gdscubworkshopandroid1.data.remote.ApiService
@@ -15,7 +16,7 @@ import retrofit2.Response
 class DetailViewModel: ViewModel() {
 
     private var api: ApiService = RetrofitService.build()
-    private val _plant: MutableLiveData<Resource<Plant>> = MutableLiveData()
+    private val _plant: MediatorLiveData<Resource<Plant>> = MediatorLiveData()
 
     fun getPlantDetail(id: Int): LiveData<Resource<Plant>> {
         _plant.value = Resource.Loading()

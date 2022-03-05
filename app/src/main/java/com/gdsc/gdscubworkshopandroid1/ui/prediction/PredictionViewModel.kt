@@ -1,6 +1,7 @@
 package com.gdsc.gdscubworkshopandroid1.ui.prediction
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gdsc.gdscubworkshopandroid1.data.remote.RetrofitService
@@ -14,7 +15,7 @@ import retrofit2.Response
 class PredictionViewModel : ViewModel() {
 
     private val api = RetrofitService.build()
-    private val _prediction: MutableLiveData<Resource<PredictionResponse>> = MutableLiveData()
+    private val _prediction: MediatorLiveData<Resource<PredictionResponse>> = MediatorLiveData()
 
     fun getPrediction(body: PredictionBody): LiveData<Resource<PredictionResponse>> {
         _prediction.value = Resource.Loading()
