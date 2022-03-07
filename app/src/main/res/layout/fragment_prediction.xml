@@ -73,4 +73,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_result"
         tools:text="Raflesia Arnoldi"/>
 
+    <Button
+        android:id="@+id/btn_predict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prediction"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_prediction_result"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

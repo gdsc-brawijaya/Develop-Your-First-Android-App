@@ -51,6 +51,13 @@ dependencies {
     //UI
     implementation 'com.github.bumptech.glide:glide:4.13.0'
 
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
     //KTX
     implementation "androidx.fragment:fragment-ktx:1.4.1"
+
+    //Coroutine Flow
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
 }
